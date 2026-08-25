@@ -1,0 +1,14 @@
+/* Utilitarios */
+@import "./utilitarios/cores.css";
+@import "./utilitarios/tipografia.css";
+@import "./utilitarios/botoes.css";
+@import "./utilitarios/componentes.css";
+
+/* Global */
+@import "./global/global.css";
+@import "./global/header.css";
+@import "./global/idioma.css";
+
+/* Secoes */
+@import "./secoes/main.css";
+@import "./secoes/sobre.css";

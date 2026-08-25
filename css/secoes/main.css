@@ -1,0 +1,186 @@
+.main-bg {
+  position: relative;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  min-height: calc(100vh - 40px);
+}
+
+/* Indicador de "role para baixo": some sozinho ao rolar, porque é só
+   mais um elemento dentro do main (não é fixed) */
+.scroll-indicador {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--cor-p1);
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.scroll-indicador:hover {
+  opacity: 1;
+}
+
+.scroll-indicador-mouse {
+  width: 24px;
+  height: 38px;
+  border: 2px solid currentColor;
+  border-radius: 14px;
+  display: flex;
+  justify-content: center;
+  padding-top: 6px;
+}
+
+.scroll-indicador-roda {
+  width: 4px;
+  height: 8px;
+  border-radius: 2px;
+  background: currentColor;
+  animation: scroll-indicador-roda 1.6s ease infinite;
+}
+
+.scroll-indicador svg {
+  width: 16px;
+  height: 16px;
+  animation: scroll-indicador-seta 1.6s ease infinite;
+}
+
+@keyframes scroll-indicador-roda {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  70% {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+}
+
+@keyframes scroll-indicador-seta {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-indicador-roda,
+  .scroll-indicador svg {
+    animation: none;
+  }
+}
+
+.main-esquerda {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 80px 0px;
+}
+
+.main-sobre {
+  position: relative;
+}
+
+.main-sobre .botao {
+  margin-top: 24px;
+}
+
+/* Coluna central: cubo mágico */
+.main-centro {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-centro video {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  transform-origin: center center;
+  animation: cubo-entrada 5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes cubo-entrada {
+  from {
+    transform: scale(2.2);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .main-centro video {
+    animation: none;
+  }
+}
+
+/* Coluna direita: habilidades */
+.main-direita {
+  position: relative;
+}
+
+.main-direita li {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px 14px 18px;
+  background: var(--cor-branco);
+  border: none;
+  border-radius: 14px;
+  box-shadow: 0 12px 28px var(--sombra-forte), 0 2px 8px var(--sombra-suave);
+  font-family: "Unbounded", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--cor-p1);
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+/* Python: encostada na quina superior do cubo, levemente torta pra fugir do rigor do grid */
+.main-direita li:nth-child(1) {
+  top: 18%;
+  left: -70px;
+  transform: rotate(-4deg);
+}
+
+/* Flutter: quina inferior, rotação oposta pra dar sensação de "jogado" ali */
+.main-direita li:nth-child(2) {
+  bottom: 22%;
+  left: -70px;
+  transform: rotate(3deg);
+}
+
+.main-direita li::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--cor-p1);
+  flex-shrink: 0;
+}
+
+.main-direita li.ativo {
+  opacity: 1;
+}
+

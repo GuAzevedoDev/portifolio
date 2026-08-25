@@ -1,0 +1,34 @@
+/* Título principal (hero) */
+.titulo {
+  font-family: "Unbounded", sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--cor-p1);
+}
+
+/* Subtítulo, usado logo abaixo de um título principal */
+.subtitulo {
+  font-family: "Unbounded", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--cor-cinza);
+  margin-top: 8px;
+}
+
+/* Título de seção, menor que o título principal */
+.titulo-secao {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--cor-p1);
+  margin-bottom: 12px;
+}
+
+/* Texto corrido / parágrafo */
+.paragrafo {
+  font-family: "Poppins", sans-serif;
+  color: var(--cor-cinza);
+  font-size: 1rem;
+  line-height: 1.6;
+}

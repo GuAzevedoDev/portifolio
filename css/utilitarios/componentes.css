@@ -1,0 +1,75 @@
+/* Componentes reutilizáveis de UI. Cada bloco corresponde a um pedaço de
+   interface que pode ser usado em mais de uma seção do site. */
+
+/* Contêiner de largura máxima: em telas muito grandes, trava o conteúdo
+   em 1600px centralizado em vez de esticar infinitamente. Sem padding
+   próprio — cada seção já cuida do respiro nas laterais */
+.container {
+  width: 100%;
+  max-width: 1600px;
+  margin-inline: auto;
+}
+
+/* Lista de contatos: fica encostada na quina direita, mas só dentro da
+   seção em que está inserida (position: absolute relativo ao container
+   com position: relative), não acompanha o scroll da página inteira */
+.contatos {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contatos a {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background: var(--cor-branco);
+  border-radius: 14px 0 0 14px;
+  box-shadow: 0 12px 28px var(--sombra-forte), 0 2px 8px var(--sombra-suave);
+  padding: 12px;
+  overflow: hidden;
+}
+
+.contato-nome {
+  max-width: 0;
+  margin-right: 0;
+  opacity: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: "Unbounded", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--cor-p1);
+  transition: max-width 0.35s ease, opacity 0.25s ease, margin-right 0.35s ease;
+}
+
+.contato-icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: var(--cor-p1);
+  transition: color 0.3s ease;
+}
+
+.contato-icone svg {
+  width: 100%;
+  height: 100%;
+}
+
+.contatos a:hover .contato-nome {
+  max-width: 140px;
+  opacity: 1;
+  margin-right: 10px;
+}
+
+.contatos a:hover .contato-icone {
+  color: var(--cor-p2);
+}
